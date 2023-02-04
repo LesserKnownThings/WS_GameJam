@@ -13,12 +13,17 @@ namespace InteractionSystem
         // Update is called once per frame
         void Update()
         {
-        
+            
         }
 
         public void Interact()
         {
             Debug.Log("Test Interactable has been interacted with");
+        }
+
+        public void StopInteract()
+        {
+            Debug.Log("Test Interactable has stop being interacted with");
         }
     }
 }

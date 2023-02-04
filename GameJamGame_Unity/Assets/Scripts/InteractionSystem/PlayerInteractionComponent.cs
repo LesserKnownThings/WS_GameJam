@@ -19,8 +19,37 @@ namespace InteractionSystem
         {
             _mask = LayerMask.GetMask("Interactable");
             _inputManager = World.Instance.GetInputManager();
-        }
 
+            _inputManager.OnInputTriggered += OnInputTriggered;
+        }
+        private void OnInputTriggered(InputActionType type, bool isPressed)
+        {
+            switch (type)
+            {
+                case InputActionType.None:
+                    break;
+                case InputActionType.LMC:
+                    break;
+                case InputActionType.RMC:
+                    break;
+                case InputActionType.MMC:
+                    break;
+                case InputActionType.Escape:
+                    break;
+                case InputActionType.Action:
+                    if(isPressed)
+                    {
+                        TryInteracting();
+                    }
+                    else
+                    {
+                        
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
         private void Update()
         {
             if (Input.GetButtonDown("Jump"))
@@ -36,6 +65,7 @@ namespace InteractionSystem
             }
         }
 
+        private IInteractable interactable;
         void TryInteracting()
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, raycastDistance, _mask);
@@ -45,8 +75,13 @@ namespace InteractionSystem
                 return;
             }
             
-            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+            interactable = hit.collider.GetComponent<IInteractable>();
             interactable?.Interact();
+        }
+
+        void StopInteracting()
+        {
+            interactable?.StopInteract();
         }
     }
 }
