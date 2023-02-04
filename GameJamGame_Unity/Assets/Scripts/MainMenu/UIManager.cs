@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum WindowActionType
 {
     MainMenu,
-    Play,
+    SceneTransition,
     Settings,
     Credits,
     Quit,
@@ -85,8 +87,44 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void StartGame()
+    public void StartGame(int sceneIndex = -1, string sceneName = "")
     {
         Helper.InternalDebugLog("Game Started", DebugType.Warning);
+
+        StartCoroutine(LoadSceneRoutine(sceneIndex, sceneName));
+    }
+
+    private IEnumerator LoadSceneRoutine(int sceneIndex = -1, string sceneName = "")
+    {
+        AsyncOperation operation = null;
+        if (sceneIndex > -1)
+        {
+            operation = SceneManager.LoadSceneAsync(sceneIndex);
+        }
+        else if (!string.IsNullOrEmpty(sceneName))
+        {
+            operation = SceneManager.LoadSceneAsync(sceneName);
+        }
+        else
+        {
+            BackAction();
+            yield return null;
+        }
+
+        if (operation != null)
+        {
+            operation.allowSceneActivation = false;
+
+            while (!operation.isDone)
+            {
+                if (operation.progress >= 0.9f)
+                {
+                    //This is just here to screw with players for 1.5 seconds because why not
+                    yield return new WaitForSeconds(1.5f);
+                    operation.allowSceneActivation = true;
+                }
+                yield return null;
+            }
+        }
     }
 }
