@@ -15,26 +15,14 @@ public enum WindowActionType
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance { get; private set; }
-
     private SubWindow currentWindow;
     private List<SubWindow> previousWindow = new List<SubWindow>();
+    
+    
 
     Dictionary<WindowActionType, SubWindow> windows = new Dictionary<WindowActionType, SubWindow>();
 
     private void Awake()
-    {
-        if(instance != null && instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-        }
-    }
-
-    private void Start()
     {
         SubWindow[] internalWindows = GetComponentsInChildren<SubWindow>();
 

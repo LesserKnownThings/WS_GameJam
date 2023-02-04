@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class World : MonoBehaviour
 {
@@ -20,6 +20,9 @@ public class World : MonoBehaviour
     }
     private static World instance;
     #endregion
+
+    [SerializeField] 
+    private bool shouldShowUIOnStart = true;
 
     [SerializeField]
     private UIManager uiManager;
@@ -45,7 +48,7 @@ public class World : MonoBehaviour
             }
         }
 
-        return uiManager;
+        return uiManagerInternal;
     }
 
     public InputManager GetInputManager()
@@ -67,6 +70,7 @@ public class World : MonoBehaviour
 
     private void Awake()
     {
+        GetUIManager();
         if(instance != null && instance != this)
         {
             Destroy(gameObject);

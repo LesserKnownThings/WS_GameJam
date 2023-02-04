@@ -48,11 +48,11 @@ public class MenuButton : MonoBehaviour
         {
             if (actionType == WindowActionType.Back)
             {
-                button.onClick.AddListener(() => UIManager.instance.BackAction());
+                button.onClick.AddListener(() => World.Instance.GetUIManager().BackAction());
             }
             else
             {
-                button.onClick.AddListener(() => UIManager.instance.CallAction(actionType));
+                button.onClick.AddListener(() => World.Instance.GetUIManager().CallAction(actionType));
             }
         }
     }

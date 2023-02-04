@@ -15,6 +15,6 @@ public class SubWindowStartGame : SubWindow
     {
         base.CallWindowAction();
 
-        UIManager.instance.StartGame(levelToLoadIndex, levelToLoadName);
+        World.Instance.GetUIManager().StartGame(levelToLoadIndex, levelToLoadName);
     }
 }
