@@ -15,12 +15,10 @@ public enum WindowActionType
 
 public class UIManager : MonoBehaviour
 {
-    private SubWindow currentWindow;
-    private List<SubWindow> previousWindow = new List<SubWindow>();
-    
-    
+    protected SubWindow currentWindow;
+    protected List<SubWindow> previousWindow = new List<SubWindow>();   
 
-    Dictionary<WindowActionType, SubWindow> windows = new Dictionary<WindowActionType, SubWindow>();
+    protected Dictionary<WindowActionType, SubWindow> windows = new Dictionary<WindowActionType, SubWindow>();
 
     private void Awake()
     {
@@ -49,7 +47,7 @@ public class UIManager : MonoBehaviour
     }
 
     //This should only be called by the button
-    public void CallAction(WindowActionType type)
+    public virtual void CallAction(WindowActionType type)
     {
         if(windows.TryGetValue(type, out SubWindow window))
         {
@@ -64,13 +62,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void BackAction()
+    public virtual void BackAction()
     {
         currentWindow.BackAction();
         
         if(previousWindow.Count > 0)
         {
             currentWindow = previousWindow[previousWindow.Count - 1];
+            previousWindow.RemoveAt(previousWindow.Count - 1);
             currentWindow.CallWindowAction();
         }
     }
