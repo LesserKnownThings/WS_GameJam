@@ -23,6 +23,8 @@ public class World : MonoBehaviour
 
     [SerializeField] 
     private bool shouldShowUIOnStart = true;
+    [SerializeField]
+    private bool levelHasHUD = false;
 
     [SerializeField]
     private UIManager uiManager;
@@ -31,6 +33,10 @@ public class World : MonoBehaviour
     [SerializeField]
     private InputManager inputManager;
     private InputManager inputManagerInternal;
+
+    [SerializeField]
+    private HUD hud;
+    private HUD hudInternal;
     
     public UIManager GetUIManager()
     {
@@ -68,11 +74,24 @@ public class World : MonoBehaviour
         return inputManagerInternal;
     }
 
+    public HUD GetHUD()
+    {
+        if(hudInternal == null && levelHasHUD)
+        {
+            if(hud != null)
+            {
+                hudInternal = Instantiate(hud);
+            }
+        }
+
+        return hudInternal;
+    }
+
     private void Awake()
     {
         GetUIManager();
         if(instance != null && instance != this)
-        {
+        {   
             Destroy(gameObject);
         }
         else
@@ -84,6 +103,13 @@ public class World : MonoBehaviour
     private void Start()
     {
         //Intializing the UI
-        GetUIManager();
+        if (shouldShowUIOnStart)
+        {
+            GetUIManager();
+        }
+        else
+        {
+            GetUIManager().BackAction();
+        }
     }
 }

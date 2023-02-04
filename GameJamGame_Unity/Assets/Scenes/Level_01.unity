@@ -152,8 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e47df51076d0d041a158c19c4bdbd75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 4011696274969286122, guid: fafad53c6af512d478b9e36c15b62164, type: 3}
+  shouldShowUIOnStart: 0
+  levelHasHUD: 1
+  uiManager: {fileID: -7806609201193451497, guid: fafad53c6af512d478b9e36c15b62164, type: 3}
   inputManager: {fileID: 1673599567341470789, guid: eae15626d5276e4429a863db8de43ed9, type: 3}
+  hud: {fileID: 5809594937061250312, guid: ae10001a00d3c544d999f70637176447, type: 3}
 --- !u!4 &155250539
 Transform:
   m_ObjectHideFlags: 0
