@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
+public delegate void OnFailedActionDelegate(string failMessage);
+
 public class MessageWindow : SubWindow
 {
     [SerializeField]
