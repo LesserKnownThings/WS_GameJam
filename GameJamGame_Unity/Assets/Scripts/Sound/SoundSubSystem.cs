@@ -29,11 +29,11 @@ public class SoundSubSystem : MonoBehaviour
         firstFadeRoutine = StartCoroutine(FirstFadeInRoutine());
     }
 
-    public void PlayMusic(bool isMainSound)
+    public void PlayMusic(EWorldState state)
     {
         if(onlyPlayMainSound)
         {
-            isMainSound = true;
+            state = EWorldState.Futur;
         }
 
         if(fadeRoutine != null)
@@ -44,12 +44,12 @@ public class SoundSubSystem : MonoBehaviour
 
         if(firstFadeRoutine != null)
         {
-            firstFadeRoutine = null;
             source.volume = 0.0f;
             StopCoroutine(firstFadeRoutine);
+            firstFadeRoutine = null;
         }
 
-        fadeRoutine = StartCoroutine(FadeSound(isMainSound));
+        fadeRoutine = StartCoroutine(FadeSound(state));
     }
 
     private IEnumerator FirstFadeInRoutine()
@@ -66,7 +66,7 @@ public class SoundSubSystem : MonoBehaviour
         firstFadeRoutine = null;
     }
 
-    private IEnumerator FadeSound(bool isMainSound)
+    private IEnumerator FadeSound(EWorldState state)
     {
         while (source.volume > 0)
         {
@@ -76,7 +76,7 @@ public class SoundSubSystem : MonoBehaviour
 
         source.Stop();
 
-        if(isMainSound)
+        if(state == EWorldState.Futur)
         {
             source.clip = mainSound;
         }

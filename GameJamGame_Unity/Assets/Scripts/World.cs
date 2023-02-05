@@ -171,13 +171,13 @@ public class World : MonoBehaviour
         }
     }
         
-    public void FadeLevel(bool isFadeIn, Transform playerThatIsFading = null, Vector3 position = new Vector3())
+    public void FadeLevel(bool isFadeIn, Transform playerThatIsFading = null, Vector3 position = new Vector3(), Action actionToCallAfterFade = null)
     {
         GetInputManager().EnableInput(false);
-        StartCoroutine(FadeRoutine(isFadeIn, playerThatIsFading, position));
+        StartCoroutine(FadeRoutine(isFadeIn, playerThatIsFading, position, actionToCallAfterFade));
     }
 
-    private IEnumerator FadeRoutine(bool isFadeIn, Transform playerThatIsFading, Vector3 position)
+    private IEnumerator FadeRoutine(bool isFadeIn, Transform playerThatIsFading, Vector3 position, Action actionToCallAfterFade)
     {
         float fadeInValue = isFadeIn ? 0f : 1f;
 
@@ -215,8 +215,10 @@ public class World : MonoBehaviour
 
                     GetInputManager().EnableInput(true);
                 }
-            }
+            }            
         }
+
+        actionToCallAfterFade?.Invoke();
     }
     
     
@@ -234,6 +236,11 @@ public class World : MonoBehaviour
 
     public void SwitchWorld()
     {
+        FadeLevel(true, actionToCallAfterFade:SwitchWorldInternal);
+    }
+    
+    private void SwitchWorldInternal()
+    {
         _currentWorldState = (_currentWorldState == EWorldState.Futur) ? EWorldState.Past : EWorldState.Futur;
         SwitchWorldDelegate?.Invoke(CurrentWorldState);
 
@@ -245,8 +252,7 @@ public class World : MonoBehaviour
         {
             tilemap.SetActive(_currentWorldState == EWorldState.Futur);
         }
-        
+
         Debug.Log("Switch world: " + _currentWorldState);
     }
-    
 }

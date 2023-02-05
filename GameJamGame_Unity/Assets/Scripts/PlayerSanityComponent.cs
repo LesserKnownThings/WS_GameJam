@@ -6,7 +6,6 @@ public delegate void OnSanityChangeDelegate(int sanityValue);
 
 public class PlayerSanityComponent : MonoBehaviour, IHUDInteractor
 {
-
     public OnSanityChangeDelegate OnSanityChange;
 
     // Lets make total sanity a multiple of 4 at all times
@@ -24,18 +23,10 @@ public class PlayerSanityComponent : MonoBehaviour, IHUDInteractor
 
     private PlayerMovementComponent _playerMovementComponent;    
     
-
-
-
     public MonoBehaviour GetOwner()
-
     {
-
         return this;
-
     }
-
-
 
     void Start()
     {
@@ -43,16 +34,8 @@ public class PlayerSanityComponent : MonoBehaviour, IHUDInteractor
         _playerMovementComponent = GetComponent<PlayerMovementComponent>();
 
         World.Instance.GetHUD().AddSubWindow(sanityWindow, this);
-
-        Invoke("Test", 1.5f);
     }
 
-    private void Test()
-
-    {
-        ChangeSanity(2);
-    }
-    
     private void ChangeSanity(int sanityDecrease)
     {
         if (sanityDecrease == 0)
@@ -64,10 +47,6 @@ public class PlayerSanityComponent : MonoBehaviour, IHUDInteractor
         Math.Clamp(currentSanity, 0, maxSanity);
 
         Helper.InternalDebugLog("Sanity Changed");
-
-
-
-
 
         OnSanityChange?.Invoke(currentSanity);
 

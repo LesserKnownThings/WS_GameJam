@@ -62,7 +62,7 @@ public class SoundManager : MonoBehaviour
 
         if (soundSubSystem != null)
         {
-            soundSubSystem.PlayMusic(true);
+            soundSubSystem.PlayMusic(EWorldState.Futur);
         }
     }
 }

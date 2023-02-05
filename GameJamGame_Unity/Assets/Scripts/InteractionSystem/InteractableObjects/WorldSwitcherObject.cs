@@ -48,5 +48,6 @@ public class WorldSwitcherObject : MonoBehaviour, IInteractable
     private void SwitchSprite(EWorldState worldState)
     {
         _spriteRenderer.sprite = worldState == EWorldState.Futur ? wireSprite : rootSprite;
+        SoundManager.Instance.soundSubSystem.PlayMusic(worldState);
     }
 }
