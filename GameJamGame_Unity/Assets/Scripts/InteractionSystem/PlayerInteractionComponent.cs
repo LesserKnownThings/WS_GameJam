@@ -13,13 +13,14 @@ namespace InteractionSystem
         private LayerMask _mask;
         
         private InputManager _inputManager;
+        private InventoryComponent _inventoryComponent;
         
         // Start is called before the first frame update
         void Start()
         {
             _mask = LayerMask.GetMask("Interactable");
             _inputManager = World.Instance.GetInputManager();
-
+            _inventoryComponent = GetComponent<InventoryComponent>();
             _inputManager.OnInputTriggered += OnInputTriggered;
         }
         private void OnInputTriggered(InputActionType type, bool isPressed)
@@ -77,6 +78,12 @@ namespace InteractionSystem
             
             interactable = hit.collider.GetComponent<IInteractable>();
             interactable?.Interact();
+
+            INPCRequirement nPCInteractionComponent = hit.transform.GetComponent<INPCRequirement>();
+            if(nPCInteractionComponent != null)
+            {
+                nPCInteractionComponent.UseItem(_inventoryComponent);
+            }
         }
 
         void StopInteracting()

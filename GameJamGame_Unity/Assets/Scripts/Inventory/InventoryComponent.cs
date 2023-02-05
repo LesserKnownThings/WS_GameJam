@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public delegate void OnInventoryChangedDelegate(string itemId, Sprite itemSprite, bool isAdded);
-public delegate void OnFailedToUseInventoryDelegate(string failMessage);
 
 public class InventoryComponent : MonoBehaviour, IHUDInteractor
 {
@@ -19,7 +18,7 @@ public class InventoryComponent : MonoBehaviour, IHUDInteractor
     private Dictionary<string /*index*/, IInventoryItem> items = new Dictionary<string, IInventoryItem>();
 
     public OnInventoryChangedDelegate OnInventoryChanged;
-    public OnFailedToUseInventoryDelegate OnFailedToUseInventory;
+    public OnFailedActionDelegate OnFailedToUseInventory;
 
     private void Start()
     {
@@ -31,23 +30,24 @@ public class InventoryComponent : MonoBehaviour, IHUDInteractor
         return this;
     }
 
-    public void TryUseItem(string itemId)
+    public bool TryUseItem(string itemId)
     {
-        if(items.TryGetValue(itemId, out IInventoryItem item))
+        if (items.TryGetValue(itemId, out IInventoryItem item))
         {
             bool shouldDestroyItem = false;
             item.UseItem(out shouldDestroyItem);
 
-            if(shouldDestroyItem)
+            if (shouldDestroyItem)
             {
                 items.Remove(itemId);
                 OnInventoryChanged?.Invoke(itemId, item.GetSprite(), false);
             }
+
+            return true;
         }
-        else
-        {
-            OnFailedToUseInventory?.Invoke(missingItemMessage);
-        }
+
+        OnFailedToUseInventory?.Invoke(missingItemMessage);
+        return false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
