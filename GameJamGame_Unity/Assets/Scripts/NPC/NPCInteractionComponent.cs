@@ -29,17 +29,7 @@ public class NPCInteractionComponent : MonoBehaviour, INPCRequirement, IHUDInter
 
     private void Start()
     {
-        World.Instance.GetHUD().AddSubWindow(messageWindow, this);
-
-        World.Instance.GetInputManager().OnInputTriggered += OnInputTriggered;        
-    }
-
-    private void OnInputTriggered(InputActionType type, bool test)
-    {
-        if(type == InputActionType.Action && test)
-        {
-            UseItem(null);
-        }
+        World.Instance.GetHUD().AddSubWindow(messageWindow, this);     
     }
 
     public void UseItem(InventoryComponent playerInventory)
