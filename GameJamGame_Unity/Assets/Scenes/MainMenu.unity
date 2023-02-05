@@ -319,6 +319,71 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!1001 &2053409361
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1731138391643606925, guid: 1c2396cfacf9ad74c9359b6cf11847b8, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731138391643606925, guid: 1c2396cfacf9ad74c9359b6cf11847b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731138391643606925, guid: 1c2396cfacf9ad74c9359b6cf11847b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731138391643606925, guid: 1c2396cfacf9ad74c9359b6cf11847b8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731138391643606925, guid: 1c2396cfacf9ad74c9359b6cf11847b8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731138391643606925, guid: 1c2396cfacf9ad74c9359b6cf11847b8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731138391643606925, guid: 1c2396cfacf9ad74c9359b6cf11847b8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731138391643606925, guid: 1c2396cfacf9ad74c9359b6cf11847b8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731138391643606925, guid: 1c2396cfacf9ad74c9359b6cf11847b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731138391643606925, guid: 1c2396cfacf9ad74c9359b6cf11847b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731138391643606925, guid: 1c2396cfacf9ad74c9359b6cf11847b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731138391643606930, guid: 1c2396cfacf9ad74c9359b6cf11847b8, type: 3}
+      propertyPath: clickSound
+      value: 
+      objectReference: {fileID: 8300000, guid: eafccd08abb87b741b6c86a608352f26, type: 3}
+    - target: {fileID: 1731138391643606930, guid: 1c2396cfacf9ad74c9359b6cf11847b8, type: 3}
+      propertyPath: hoverSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f8c147b03e77dea418eed50888413fa2, type: 3}
+    - target: {fileID: 1731138391643606931, guid: 1c2396cfacf9ad74c9359b6cf11847b8, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1c2396cfacf9ad74c9359b6cf11847b8, type: 3}
 --- !u!1 &2140279299
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,8 +413,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e47df51076d0d041a158c19c4bdbd75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shouldShowUIOnStart: 1
+  levelHasHUD: 0
   uiManager: {fileID: 7853185223562965306, guid: 36fb90be1b455924d80f5046cd4b14c0, type: 3}
   inputManager: {fileID: 1673599567341470789, guid: eae15626d5276e4429a863db8de43ed9, type: 3}
+  hud: {fileID: 0}
+  fadeSpeed: 2.5
+  blackScreenDuration: 1
 --- !u!4 &2140279301
 Transform:
   m_ObjectHideFlags: 0
