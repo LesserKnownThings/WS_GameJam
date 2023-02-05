@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class HUDWindow : SubWindow
+public class HUDWindow : MonoBehaviour
 {
     
     public virtual void InitHUDWindow(IHUDInteractor interactor)

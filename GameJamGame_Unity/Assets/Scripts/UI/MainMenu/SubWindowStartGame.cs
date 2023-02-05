@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public class SubWindowStartGame : SubWindow
@@ -15,6 +13,6 @@ public class SubWindowStartGame : SubWindow
     {
         base.CallWindowAction();
 
-        World.Instance.GetUIManager().StartGame(levelToLoadIndex, levelToLoadName);
+        World.Instance.StartGame(levelToLoadIndex, levelToLoadName);
     }
 }

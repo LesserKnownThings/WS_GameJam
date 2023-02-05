@@ -1,4 +1,8 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public delegate void OnLoadLevelFailedDelegate();
 
 public class World : MonoBehaviour
 {
@@ -37,7 +41,9 @@ public class World : MonoBehaviour
     [SerializeField]
     private HUD hud;
     private HUD hudInternal;
-    
+
+    public OnLoadLevelFailedDelegate OnLoadLevelFailed;
+
     public UIManager GetUIManager()
     {
         if(uiManagerInternal == null)
@@ -110,6 +116,47 @@ public class World : MonoBehaviour
         else
         {
             GetUIManager().BackAction();
+        }
+    }
+
+    public void StartGame(int sceneIndex = -1, string sceneName = "")
+    {
+        Helper.InternalDebugLog("Game Started", DebugType.Warning);
+
+        StartCoroutine(LoadSceneRoutine(sceneIndex, sceneName));
+    }
+
+    private IEnumerator LoadSceneRoutine(int sceneIndex = -1, string sceneName = "")
+    {
+        AsyncOperation operation = null;
+        if (sceneIndex > -1)
+        {
+            operation = SceneManager.LoadSceneAsync(sceneIndex);
+        }
+        else if (!string.IsNullOrEmpty(sceneName))
+        {
+            operation = SceneManager.LoadSceneAsync(sceneName);
+        }
+        else
+        {
+            OnLoadLevelFailed?.Invoke();
+            yield return null;
+        }
+
+        if (operation != null)
+        {
+            operation.allowSceneActivation = false;
+
+            while (!operation.isDone)
+            {
+                if (operation.progress >= 0.9f)
+                {
+                    //This is just here to screw with players for 1.5 seconds because why not
+                    yield return new WaitForSeconds(1.5f);
+                    operation.allowSceneActivation = true;
+                }
+                yield return null;
+            }
         }
     }
 }

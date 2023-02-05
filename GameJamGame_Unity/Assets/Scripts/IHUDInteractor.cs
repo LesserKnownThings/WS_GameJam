@@ -2,5 +2,5 @@
 
 public interface IHUDInteractor
 {
-    public GameObject GetOwnerObj();
+    public MonoBehaviour GetOwner();
 }

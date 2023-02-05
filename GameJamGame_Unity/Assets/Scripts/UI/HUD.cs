@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class HUD : MonoBehaviour
 {
-    private List<HUDWindow> windows;
+    private List<HUDWindow> windows = new List<HUDWindow>();
 
     public void AddSubWindow(HUDWindow windowToAdd, IHUDInteractor interactor)
     {
-        windowToAdd.InitHUDWindow(interactor);
-        windows.Add(windowToAdd);
+        HUDWindow internalWindow = Instantiate(windowToAdd, transform, false);
+        internalWindow.InitHUDWindow(interactor);
+        windows.Add(internalWindow);
     }
 }

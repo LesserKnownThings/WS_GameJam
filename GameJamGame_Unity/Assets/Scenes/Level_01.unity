@@ -156,7 +156,7 @@ MonoBehaviour:
   levelHasHUD: 1
   uiManager: {fileID: -7806609201193451497, guid: fafad53c6af512d478b9e36c15b62164, type: 3}
   inputManager: {fileID: 1673599567341470789, guid: eae15626d5276e4429a863db8de43ed9, type: 3}
-  hud: {fileID: 5809594937061250312, guid: ae10001a00d3c544d999f70637176447, type: 3}
+  hud: {fileID: 7089355856234759890, guid: ae10001a00d3c544d999f70637176447, type: 3}
 --- !u!4 &155250539
 Transform:
   m_ObjectHideFlags: 0
@@ -337,7 +337,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 2
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -361,7 +361,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779688835}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 487.6019, y: 261.38608, z: -1.3043871}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
