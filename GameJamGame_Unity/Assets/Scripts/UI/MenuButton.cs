@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MenuButton : MonoBehaviour
+public class MenuButton : MonoBehaviour, IPointerEnterHandler
 {
     [SerializeField]
     private WindowActionType actionType;
@@ -54,7 +55,14 @@ public class MenuButton : MonoBehaviour
             {
                 button.onClick.AddListener(() => World.Instance.GetUIManager().CallAction(actionType));
             }
+
+            button.onClick.AddListener(() => PlaySound(false));
         }
+    }
+
+    private void PlaySound(bool isHover)
+    {
+        SoundManager.Instance.PlayUISound(isHover);
     }
 
     private void SetButton()
@@ -85,5 +93,10 @@ public class MenuButton : MonoBehaviour
     private void OnValidate()
     {
         SetButton();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        PlaySound(true);
     }
 }
