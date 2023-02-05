@@ -42,6 +42,13 @@ public class World : MonoBehaviour
     private HUD hud;
     private HUD hudInternal;
 
+    [Space(10)]
+    [Header("Fading")]
+    [SerializeField]
+    private float fadeSpeed = 2.5f;
+    [SerializeField]
+    private float blackScreenDuration = 1.0f;
+
     public OnLoadLevelFailedDelegate OnLoadLevelFailed;
 
     public UIManager GetUIManager()
@@ -156,6 +163,54 @@ public class World : MonoBehaviour
                     operation.allowSceneActivation = true;
                 }
                 yield return null;
+            }
+        }
+    }
+        
+    public void FadeLevel(bool isFadeIn, Transform playerThatIsFading = null, Vector3 position = new Vector3())
+    {
+        GetInputManager().EnableInput(false);
+        StartCoroutine(FadeRoutine(isFadeIn, playerThatIsFading, position));
+    }
+
+    private IEnumerator FadeRoutine(bool isFadeIn, Transform playerThatIsFading, Vector3 position)
+    {
+        float fadeInValue = isFadeIn ? 0f : 1f;
+
+        if (GetUIManager().TryGetWindow(WindowActionType.Fade, out SubWindow subWindow))
+        {
+            SceneFaderWindow faderWindow = (SceneFaderWindow)subWindow;
+
+            if (faderWindow != null)
+            {
+                if (isFadeIn)
+                {
+                    while (fadeInValue < 1f)
+                    {
+                        fadeInValue += Time.deltaTime * fadeSpeed;
+                        faderWindow.SetAlpha(fadeInValue);
+                        yield return null;
+                    }
+
+                    if(playerThatIsFading != null)
+                    {
+                        playerThatIsFading.position = position;
+                    }
+
+                    yield return new WaitForSeconds(blackScreenDuration);
+                    FadeLevel(false);
+                }
+                else
+                {
+                    while (fadeInValue > 0f)
+                    {
+                        fadeInValue -= Time.deltaTime * fadeSpeed;
+                        faderWindow.SetAlpha(fadeInValue);
+                        yield return null;
+                    }
+
+                    GetInputManager().EnableInput(true);
+                }
             }
         }
     }

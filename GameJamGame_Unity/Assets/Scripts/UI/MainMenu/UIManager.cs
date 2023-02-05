@@ -9,7 +9,9 @@ public enum WindowActionType
     Credits,
     Quit,
     Back,
-    Message
+    Message,
+    Fade,
+    Sanity
 }
 
 public class UIManager : MonoBehaviour

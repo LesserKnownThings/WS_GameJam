@@ -17,8 +17,15 @@ public class InputManager : MonoBehaviour
 {
     public OnInputActionTriggeredDelegate OnInputTriggered;
 
+    private bool isInputEnabled = true;
+
     public Vector2 movementVector { get;private set; }
     public Vector2 mousePosition { get; private set; }
+
+    public void EnableInput(bool isEnabled)
+    {
+        isInputEnabled = isEnabled;
+    }
 
     private void OnMove(InputValue value)
     {
@@ -27,7 +34,10 @@ public class InputManager : MonoBehaviour
 
     private void OnMousePosition(InputValue value)
     {
-        mousePosition = value.Get<Vector2>();
+        if (isInputEnabled)
+        {
+            mousePosition = value.Get<Vector2>();
+        }
     }    
 
     private void OnLMC(InputValue value)
@@ -47,12 +57,18 @@ public class InputManager : MonoBehaviour
 
     private void OnEscape(InputValue value)
     {
-        OnInputTriggered?.Invoke(InputActionType.Escape, value.isPressed);
+        if (isInputEnabled)
+        {
+            OnInputTriggered?.Invoke(InputActionType.Escape, value.isPressed);
+        }
     }
 
     private void OnAction(InputValue value)
     {
-        OnInputTriggered?.Invoke(InputActionType.Action, value.isPressed);
-        Helper.InternalDebugLog("Called Action");
+        if (isInputEnabled)
+        {
+            OnInputTriggered?.Invoke(InputActionType.Action, value.isPressed);
+            Helper.InternalDebugLog("Called Action");
+        }
     }
 }

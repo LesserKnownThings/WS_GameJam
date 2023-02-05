@@ -157,6 +157,8 @@ MonoBehaviour:
   uiManager: {fileID: -7806609201193451497, guid: fafad53c6af512d478b9e36c15b62164, type: 3}
   inputManager: {fileID: 1673599567341470789, guid: eae15626d5276e4429a863db8de43ed9, type: 3}
   hud: {fileID: 7089355856234759890, guid: ae10001a00d3c544d999f70637176447, type: 3}
+  fadeSpeed: 2.5
+  blackScreenDuration: 1
 --- !u!4 &155250539
 Transform:
   m_ObjectHideFlags: 0
@@ -171,6 +173,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &804976874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 804976876}
+  - component: {fileID: 804976875}
+  m_Layer: 0
+  m_Name: Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &804976875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804976874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a46423b63a0c81f469f506b243ea337c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSanity: 4
+  currentSanity: 0
+  sanityWindow: {fileID: 3726543217441366597, guid: 32f4ac56626ff3a4c9d1993cb9928cf2, type: 3}
+--- !u!4 &804976876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804976874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1490781452
 GameObject:
@@ -337,7 +386,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2
+  orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

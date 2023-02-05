@@ -1,38 +1,49 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using JetBrains.Annotations;
 using Unity.Collections;
 using UnityEngine;
 
-public class PlayerSanityComponent : MonoBehaviour
+public delegate void OnSanityChangeDelegate(int sanityValue);
+
+public class PlayerSanityComponent : MonoBehaviour, IHUDInteractor
 {
-    
+    public OnSanityChangeDelegate OnSanityChange;
+
     // Lets make total sanity a multiple of 4 at all times
     [SerializeField, Min(1), ReadOnly]
     private int maxSanity = 4;
 
-    [SerializeField] private int currentSanity;
+    [SerializeField] 
+    private int currentSanity;
 
-    private PlayerMovementComponent _playerMovementComponent;
+    [SerializeField]
+    private int sanityDecreaseRate = 1;
+
+    [SerializeField]
+    private HUDWindow sanityWindow;
+
+    private PlayerMovementComponent _playerMovementComponent;    
     
-    delegate void SanityChange(float sanityPercentage);
-    SanityChange _myDelegate;
-    
-    // Start is called before the first frame update
+
+    public MonoBehaviour GetOwner()
+    {
+        return this;
+    }
+
     void Start()
     {
         currentSanity = maxSanity;
         _playerMovementComponent = GetComponent<PlayerMovementComponent>();
+
+        World.Instance.GetHUD().AddSubWindow(sanityWindow, this);
+
+        Invoke("Test", 1.5f);
+    }
+
+    private void Test()
+    {
+        ChangeSanity(2);
     }
     
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void ChangeSanity(int sanityDecrease)
     {
         if (sanityDecrease == 0)
@@ -42,10 +53,11 @@ public class PlayerSanityComponent : MonoBehaviour
 
         currentSanity -= sanityDecrease;
         Math.Clamp(currentSanity, 0, maxSanity);
-        Debug.Log("Sanity Changed");
-        
-        
-        _myDelegate.Invoke(sanityPercentage: currentSanity/maxSanity);
+        Helper.InternalDebugLog("Sanity Changed");
+
+
+        OnSanityChange?.Invoke(currentSanity);
+
         if (currentSanity <= 0)
         {
             // Game Over
@@ -58,17 +70,18 @@ public class PlayerSanityComponent : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("other hit");
+        Helper.InternalDebugLog("other hit");
         Transform otherTransform = other.transform;
         if (otherTransform.CompareTag("Enemy"))
         {
-            Debug.Log("Player was hit");
+            Helper.InternalDebugLog("Player was hit");
             
-            transform.GetComponent<PlayerSanityComponent>().ChangeSanity(1);
+            //What's up with the getter here?
+            transform.GetComponent<PlayerSanityComponent>().ChangeSanity(sanityDecreaseRate);
 
             Vector2 knockBackDirection = (transform.position - otherTransform.position).normalized;
             
             _playerMovementComponent.AddKnockBackToMovement(knockBackDirection);
         }
-    }
+    }    
 }

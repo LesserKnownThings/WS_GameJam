@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class HUD : MonoBehaviour
 {
+    [SerializeField]
     private List<HUDWindow> windows = new List<HUDWindow>();
 
     public void AddSubWindow(HUDWindow windowToAdd, IHUDInteractor interactor)
