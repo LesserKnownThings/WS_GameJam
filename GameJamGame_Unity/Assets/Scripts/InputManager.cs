@@ -68,7 +68,6 @@ public class InputManager : MonoBehaviour
         if (isInputEnabled)
         {
             OnInputTriggered?.Invoke(InputActionType.Action, value.isPressed);
-            Helper.InternalDebugLog("Called Action");
         }
     }
 }

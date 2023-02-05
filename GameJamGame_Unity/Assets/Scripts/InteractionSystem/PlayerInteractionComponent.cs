@@ -53,11 +53,6 @@ namespace InteractionSystem
         }
         private void Update()
         {
-            if (Input.GetButtonDown("Jump"))
-            {
-                TryInteracting();
-            }
-
             var movementVector = _inputManager.movementVector;
             if (movementVector != Vector2.zero)
             {
@@ -69,13 +64,16 @@ namespace InteractionSystem
         private IInteractable interactable;
         void TryInteracting()
         {
+            // will only hit gameobjects that are on the Interactable layer
             RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, raycastDistance, _mask);
-            
+
+            Debug.DrawLine(transform.position, (Vector2) transform.position + direction * raycastDistance, Color.green, 2.0f);
+            // Debug.Log("hit collider: " + hit.transform.name);
             if (hit.collider == null)
             {
                 return;
             }
-            
+
             interactable = hit.collider.GetComponent<IInteractable>();
             interactable?.Interact();
 

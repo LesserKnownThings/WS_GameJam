@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 public delegate void OnLoadLevelFailedDelegate();
 
@@ -124,6 +126,8 @@ public class World : MonoBehaviour
         {
             GetUIManager().BackAction();
         }
+        SwitchWorldDelegate?.Invoke(CurrentWorldState);
+
     }
 
     public void StartGame(int sceneIndex = -1, string sceneName = "")
@@ -214,4 +218,35 @@ public class World : MonoBehaviour
             }
         }
     }
+    
+    
+    public static event Action<EWorldState> SwitchWorldDelegate;
+
+    private EWorldState _currentWorldState = EWorldState.Past;
+
+    public EWorldState CurrentWorldState
+    {
+        get => _currentWorldState;
+    }
+    
+    [SerializeField] private GameObject[] pastTilemap;
+    [SerializeField] private GameObject[] futureTilemap;
+
+    public void SwitchWorld()
+    {
+        _currentWorldState = (_currentWorldState == EWorldState.Futur) ? EWorldState.Past : EWorldState.Futur;
+        SwitchWorldDelegate?.Invoke(CurrentWorldState);
+
+        foreach (var tilemap in pastTilemap)
+        {
+            tilemap.SetActive(_currentWorldState == EWorldState.Past);
+        }
+        foreach (var tilemap in futureTilemap)
+        {
+            tilemap.SetActive(_currentWorldState == EWorldState.Futur);
+        }
+        
+        Debug.Log("Switch world: " + _currentWorldState);
+    }
+    
 }

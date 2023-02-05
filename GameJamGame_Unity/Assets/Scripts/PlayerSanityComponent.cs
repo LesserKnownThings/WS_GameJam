@@ -6,6 +6,7 @@ public delegate void OnSanityChangeDelegate(int sanityValue);
 
 public class PlayerSanityComponent : MonoBehaviour, IHUDInteractor
 {
+
     public OnSanityChangeDelegate OnSanityChange;
 
     // Lets make total sanity a multiple of 4 at all times
@@ -24,10 +25,17 @@ public class PlayerSanityComponent : MonoBehaviour, IHUDInteractor
     private PlayerMovementComponent _playerMovementComponent;    
     
 
+
+
     public MonoBehaviour GetOwner()
+
     {
+
         return this;
+
     }
+
+
 
     void Start()
     {
@@ -40,6 +48,7 @@ public class PlayerSanityComponent : MonoBehaviour, IHUDInteractor
     }
 
     private void Test()
+
     {
         ChangeSanity(2);
     }
@@ -53,7 +62,11 @@ public class PlayerSanityComponent : MonoBehaviour, IHUDInteractor
 
         currentSanity -= sanityDecrease;
         Math.Clamp(currentSanity, 0, maxSanity);
+
         Helper.InternalDebugLog("Sanity Changed");
+
+
+
 
 
         OnSanityChange?.Invoke(currentSanity);
@@ -70,18 +83,19 @@ public class PlayerSanityComponent : MonoBehaviour, IHUDInteractor
     
     private void OnCollisionEnter2D(Collision2D other)
     {
+
         Helper.InternalDebugLog("other hit");
         Transform otherTransform = other.transform;
         if (otherTransform.CompareTag("Enemy"))
         {
             Helper.InternalDebugLog("Player was hit");
             
-            //What's up with the getter here?
-            transform.GetComponent<PlayerSanityComponent>().ChangeSanity(sanityDecreaseRate);
+            ChangeSanity(1);
 
             Vector2 knockBackDirection = (transform.position - otherTransform.position).normalized;
             
             _playerMovementComponent.AddKnockBackToMovement(knockBackDirection);
         }
     }    
+
 }
