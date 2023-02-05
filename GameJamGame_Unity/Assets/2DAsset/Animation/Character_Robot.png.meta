@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b8dc8562f0af91a49893ebdccf1d0030
+guid: 97536ccb77d29fa4c9153a01acfc7518
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Character_Timmy_0
+      name: Character_Robot_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a727d2e0d2ec60448aacabbfa20742b
-      internalID: 1863909397
+      spriteID: ae9c4bc2d225e6f4da99ccf10b278ac1
+      internalID: 2040485478
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_Timmy_1
+      name: Character_Robot_1
       rect:
         serializedVersion: 2
         x: 64
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 443c18881dc26d747bdb4a6e367651e9
-      internalID: -1831934915
+      spriteID: e5bbbc3c1582f074ba09bef3cb933cda
+      internalID: -953530052
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_Timmy_2
+      name: Character_Robot_2
       rect:
         serializedVersion: 2
         x: 128
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de89abad0ddef4649bb20a95dfa4364e
-      internalID: 1428100209
+      spriteID: 36b3ee45a820af040b260a7d141194f3
+      internalID: -1195495420
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_Timmy_3
+      name: Character_Robot_3
       rect:
         serializedVersion: 2
         x: 0
@@ -194,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37053547daffa044288f6402fad5d9c8
-      internalID: 555058143
+      spriteID: 3c286ba8cab9b4940b01d6918a3db1b9
+      internalID: 554000987
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_Timmy_4
+      name: Character_Robot_4
       rect:
         serializedVersion: 2
         x: 64
@@ -215,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e116dee98f2e524087e02e88dd5f79a
-      internalID: 1158032996
+      spriteID: ef9e9c109db35204981c6dafb0480500
+      internalID: 48219385
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_Timmy_5
+      name: Character_Robot_5
       rect:
         serializedVersion: 2
         x: 128
@@ -236,14 +236,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c72d872c07c45754fa110589d1e615ce
-      internalID: 246407386
+      spriteID: 811542eaf9922424c8baf79c9e8ab64e
+      internalID: -321232286
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_Timmy_6
+      name: Character_Robot_6
       rect:
         serializedVersion: 2
         x: 0
@@ -257,14 +257,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86049559c65ae65448351ac5b4056f7e
-      internalID: 2104050779
+      spriteID: 85b07996bd99fa34db60258688c19818
+      internalID: 233045434
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_Timmy_7
+      name: Character_Robot_7
       rect:
         serializedVersion: 2
         x: 64
@@ -278,14 +278,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af5b74dc5e4ff97449467b869ceedcfa
-      internalID: -1170632646
+      spriteID: 5428fab9a5eea344cafb66c3985b3475
+      internalID: 551962910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_Timmy_8
+      name: Character_Robot_8
       rect:
         serializedVersion: 2
         x: 128
@@ -299,14 +299,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7873c373b4f76514d92eae897e14193c
-      internalID: -1212411506
+      spriteID: 0d510cc798853b64b93f9eb3cab5159f
+      internalID: -580631446
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_Timmy_9
+      name: Character_Robot_9
       rect:
         serializedVersion: 2
         x: 0
@@ -320,14 +320,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 261d50b0dbb0b8a4dbc7e86ebf75bca8
-      internalID: -1171460715
+      spriteID: 1ee30f9396bcbc54ba07b00987032440
+      internalID: -609198741
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_Timmy_10
+      name: Character_Robot_10
       rect:
         serializedVersion: 2
         x: 64
@@ -341,14 +341,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d93072adb4f71bb409912ea9700f2008
-      internalID: -833600683
+      spriteID: 3c0b42b4187674f418100536f13a5635
+      internalID: 1973097468
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character_Timmy_11
+      name: Character_Robot_11
       rect:
         serializedVersion: 2
         x: 128
@@ -362,8 +362,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83ad6c870d7748c4e89b6d8ab9d89450
-      internalID: -727359691
+      spriteID: 4258040a45ce5f14fb01db0d9b980e0e
+      internalID: -1214023158
       vertices: []
       indices: 
       edges: []
@@ -379,18 +379,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Character_Timmy_8: -1212411506
-      Character_Timmy_7: -1170632646
-      Character_Timmy_1: -1831934915
-      Character_Timmy_3: 555058143
-      Character_Timmy_11: -727359691
-      Character_Timmy_10: -833600683
-      Character_Timmy_5: 246407386
-      Character_Timmy_6: 2104050779
-      Character_Timmy_9: -1171460715
-      Character_Timmy_2: 1428100209
-      Character_Timmy_4: 1158032996
-      Character_Timmy_0: 1863909397
+      Character_Robot_11: -1214023158
+      Character_Robot_5: -321232286
+      Character_Robot_6: 233045434
+      Character_Robot_10: 1973097468
+      Character_Robot_0: 2040485478
+      Character_Robot_3: 554000987
+      Character_Robot_8: -580631446
+      Character_Robot_2: -1195495420
+      Character_Robot_7: 551962910
+      Character_Robot_9: -609198741
+      Character_Robot_1: -953530052
+      Character_Robot_4: 48219385
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
