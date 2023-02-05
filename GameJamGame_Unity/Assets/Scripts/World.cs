@@ -113,7 +113,6 @@ public class World : MonoBehaviour
         {
             instance = this;
         }
-        SwitchWorldDelegate?.Invoke(CurrentWorldState);
     }
 
     private void Start()
